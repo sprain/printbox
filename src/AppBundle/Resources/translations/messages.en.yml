@@ -1,0 +1,14 @@
+basics:
+  button:
+    add: 'Add'
+    back: 'Back'
+
+wlan:
+  title:
+    wlans: 'WLAN'
+    add: 'Add new WLAN'
+  label:
+    ssid: 'SSID'
+    password: 'Password'
+  button:
+    add: 'Add WLAN'

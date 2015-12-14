@@ -1,0 +1,17 @@
+parameters:
+    database_driver:    pdo_sqlite
+    database_path:      %kernel.root_dir%/data/printbox.db
+    database_host:      ~
+    database_port:      ~
+    database_name:      ~
+    database_user:      ~
+    database_password:  ~
+
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+
+    secret: 8f40ea6424ef147759e634c26934ad1ca0b8bf1c
+
+    wpa_supplicant_path: %kernel.root_dir%/data/wpa_supplicant.conf

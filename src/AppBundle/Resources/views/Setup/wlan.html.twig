@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <a href="{{ path('addWlan') }}" class="u-pull-right button">{% trans %}basics.button.add{% endtrans %}</a>
+    <h4>{% trans %}wlan.title.wlans{% endtrans %}</h4>
+    <table class="u-full-width border-top">
+        <tbody>
+        {% for wlan in wlans %}
+            <tr>
+                <td>{{ wlan.ssid }}</td>
+                <td><a class="u-pull-right" href="{{ path('removeWlan', {'id': wlan.id }) }}">remove</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
