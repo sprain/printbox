@@ -3,8 +3,8 @@ update_config=1
 
 {% for wlan in wlans %}
 network={
-    ssid = "{{ wlan.ssid }}"
-    psk  = "{{ wlan.password }}"
+ssid="{{ wlan.ssid }}"
+psk="{{ wlan.password }}"
 }
 
 {% endfor %}
