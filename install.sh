@@ -9,6 +9,9 @@ sudo apt-get install php5-curl
 sudo apt-get install sqlite3
 sudo apt-get install php5-sqlite
 
+# INSTALL DHCP SERVER
+sudo apt-get install isc-dhcp-server
+
 # INSTALL COMPOSER
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
@@ -23,10 +26,14 @@ php app/console cache:clear --env=prod
 sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data
 sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data
 
-
 # CONFIGURE APACHE
 sudo cp /ticketpark/printbox/install/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 sudo apachectl restart
 
 # CONFIGURE WLAN SETTINGS
 sudo cp /ticketpark/printbox/install/etc/network/interfaces /etc/network/interfaces
+sudo cp /ticketpark/printbox/install/etc/default/isc-dhcp-server /etc/default/isc-dhcp-server
+sudo cp /ticketpark/printbox/install/etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp /ticketpark/printbox/install/etc/rc.local /etc/rc.local
+sudo update-rc.d -f isc-dhcp-server remove
+
