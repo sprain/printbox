@@ -1,6 +1,6 @@
 ## Installation
-1. Take a Raspberry Pi via an [installed Raspbian](https://www.raspberrypi.org/downloads/) and a [WiFi dongle](https://www.raspberrypi.org/products/usb-wifi-dongle/).
-2. Boot and connect Raspberry Pi via Ethernet to network.
+1. Take a Raspberry Pi with an [installed Raspbian](https://www.raspberrypi.org/downloads/) and a [WiFi dongle](https://www.raspberrypi.org/products/usb-wifi-dongle/).
+2. Connect Raspberry Pi via Ethernet to network.
 3. On your computer, look for Raspberry Pi on network
 
     ```
@@ -16,4 +16,4 @@
     ```
 
 6. Open `http://{ip-address}` in browser.
-7. Add WiFi and reboot Raspberry PI. It should now connect to one of the defined WiFis, if available.
+7. Add WiFi settings and reboot Raspberry Pi. It should now connect to one of the defined WiFis, if available.
