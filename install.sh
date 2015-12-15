@@ -12,6 +12,19 @@ sudo apt-get install php5-sqlite
 # INSTALL DHCP SERVER
 sudo apt-get install isc-dhcp-server
 
+# INSTALL PRINTING
+sudo apt-get -y install cups
+sudo usermod -a -G lpadmin pi
+sudo cp /ticketpark/printbox/install/etc/cups/cupsd.conf /etc/cups/cupsd.conf
+sudo /etc/init.d/cups restart
+
+wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+tar zxf foo2zjs.tar.gz
+cd foo2zjs
+make
+sudo make install
+sudo make cups
+
 # INSTALL COMPOSER
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
