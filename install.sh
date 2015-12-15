@@ -1,3 +1,7 @@
+# UPDATE SYSTEM
+sudo apt-get update
+sudo apt-get upgrade
+
 # INSTALL APACHE
 sudo apt-get install apache2 -y
 
