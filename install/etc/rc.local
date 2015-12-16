@@ -18,7 +18,7 @@ echo "================================="
 echo "RPi Network Conf Bootstrapper 0.1"
 echo "================================="
 echo "Scanning for known WiFi networks"
-ssids=($(grep ssid /ticketpark/printbox/app/data/wpa_supplicant.conf | sed -r 's/^.{6}//' | sed -r 's/.{1}$//'))
+ssids=($(grep ssid /ticketpark/data/wpa_supplicant.conf | sed -r 's/^.{6}//' | sed -r 's/.{1}$//'))
 connected=false
 for ssid in "${ssids[@]}"
 do
