@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <a href="{{ path('addWlan') }}" class="u-pull-right button">{% trans %}basics.button.add{% endtrans %}</a>
+    <h4>{% trans %}wlan.title.wlans{% endtrans %}</h4>
+    <table class="u-full-width border-top">
+        <tbody>
+        {% for wlan in wlans %}
+            <tr>
+                <td>{{ wlan.ssid }}</td>
+                <td><a class="u-pull-right" href="{{ path('removeWlan', {'id': wlan.id }) }}">{% trans %}basics.button.remove{% endtrans %}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="http://{{ app.request.host }}:631" class="u-pull-right button">{% trans %}basics.button.add{% endtrans %}</a>
+    <h4>{% trans %}printer.title.installedPrinters{% endtrans %}</h4>
+    <table class="u-full-width border-top">
+        <tbody>
+        {% for printer in printers %}
+            <tr>
+                <td>{{ printer.name }}</td>
+                <td>
+                    {% if defaultPrinter == printer.name %}
+                        <strong class="u-pull-right">{% trans %}printer.notice.isDefault{% endtrans %}</strong>
+                    {% else %}
+                        <a class="u-pull-right" href="{{ path('makeDefaultPrinter', {'printerName': printer.name}) }}">{% trans %}printer.button.use{% endtrans %}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

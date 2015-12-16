@@ -2,8 +2,35 @@
 
 namespace AppBundle\Printer;
 
+use Symfony\Component\Filesystem\Filesystem;
+
 class CupsHandler
 {
+    protected $defaultPrinterFile;
+
+    public function __construct($defaultPrinterFile)
+    {
+        $this->defaultPrinterFile = $defaultPrinterFile;
+    }
+
+    public function getDefaultPrinter()
+    {
+        if (file_exists($this->defaultPrinterFile) && is_readable($this->defaultPrinterFile)) {
+            return file_get_contents($this->defaultPrinterFile);
+        }
+
+        return null;
+    }
+
+    public function setDefaultPrinter($printerName)
+    {
+        if (!file_exists($this->defaultPrinterFile) || is_writable($this->defaultPrinterFile)) {
+             return file_put_contents($this->defaultPrinterFile, $printerName);
+        }
+
+        return false;
+    }
+
     public function getPrinters()
     {
         $response  = $this->runCommand('lpstat -p');

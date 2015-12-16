@@ -5,15 +5,17 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Wlan;
 use AppBundle\Form\WlanType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 
 class SetupController extends Controller
 {
     /**
-     * @Route("/", name="wlan")
+     * @Route("/", name="index")
      * @Method({"GET"})
      */
     public function indexAction(Request $request)
@@ -21,8 +23,10 @@ class SetupController extends Controller
         $em = $this->getDoctrine()->getManager();
         $wlans = $em->getRepository('AppBundle:Wlan')->findBy(array(), array('ssid' => 'asc'));
 
-        return $this->render('@App/Setup/wlan.html.twig', array(
+        return $this->render('@App/Setup/index.html.twig', array(
             'wlans' => $wlans,
+            'printers' => $this->get('printbox.printers')->getPrinters()[0],
+            'defaultPrinter' => $this->get('printbox.printers')->getDefaultPrinter()
         ));
     }
 
@@ -59,7 +63,6 @@ class SetupController extends Controller
     /**
      * @Route("/wlan/remove/{id}", name="removeWlan")
      * @Method({"GET"})
-     * @ParamConverter("post", class="AppBundle:Wlan")
      */
     public function removeWlanAction(Request $request, Wlan $wlan)
     {
@@ -69,7 +72,18 @@ class SetupController extends Controller
 
         $this->generateWpaSupplicant();
 
-        return $this->redirect($this->generateUrl('wlan'));
+        return $this->redirect($this->generateUrl('index'));
+    }
+
+    /**
+     * @Route("/printers/use/{printerName}", name="makeDefaultPrinter")
+     * @Method({"GET"})
+     */
+    public function makeDefaultPrinterAction(Request $request, $printerName)
+    {
+        $this->get('printbox.printers')->setDefaultPrinter($printerName);
+
+        return $this->redirect($this->generateUrl('index'));
     }
 
 
@@ -84,5 +98,4 @@ class SetupController extends Controller
 
         file_put_contents($this->getParameter('wpa_supplicant_path'), $wpaConf->getContent());
     }
-
 }

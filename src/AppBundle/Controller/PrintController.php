@@ -20,9 +20,14 @@ class PrintController extends Controller
         $form = $this->createForm(PrintType::class);
         $form->handleRequest($request);
 
+        $defaultPrinter = $this->get('printbox.printers')->getDefaultPrinter();
+        if (!$defaultPrinter) {
+            $this->get('logger')->error('PRINTING FAILED: No current printer selected.');
+            return new Response('Print failed: No current printer selected.', 500);
+        }
+
         if ($form->isValid()) {
             $file = $form->getData()['file'];
-
             if (!$file) {
                 $this->get('logger')->error('PRINTING FAILED: Empty file provided.');
                 return new Response('Print failed: No file provided.', 400);
@@ -31,7 +36,10 @@ class PrintController extends Controller
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             $file = $file->move($this->getParameter('print_dir'), $fileName);
 
-            $printResponse = $this->get('printbox.printer.cupshandler')->submit($file->getRealPath());
+            $printResponse = $this->get('printbox.printers')->submit(
+                $file->getRealPath(),
+                $defaultPrinter
+            );
 
             unlink($file->getRealPath());
 
@@ -44,14 +52,5 @@ class PrintController extends Controller
         }
 
         return new Response('No print provided', 400);
-    }
-
-    /**
-     * @Route("/printers", name="printers")
-     */
-    public function printersAction(Request $request)
-    {
-        var_dump($this->get('printbox.printer.cupshandler')->getPrinters());
-        exit;
     }
 }

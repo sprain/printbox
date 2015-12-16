@@ -16,5 +16,6 @@ parameters:
 
     secret: 8f40ea6424ef147759e634c26934ad1ca0b8bf1c
 
-    wpa_supplicant_path: %data_dir%/wpa_supplicant.conf
-    print_dir:           %data_dir%/print
+    wpa_supplicant_path:  %data_dir%/wpa_supplicant.conf
+    default_printer_path: %data_dir%/default_printer
+    print_dir:            %data_dir%/print

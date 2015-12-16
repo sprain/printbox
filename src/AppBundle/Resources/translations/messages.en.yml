@@ -2,6 +2,7 @@ basics:
   button:
     add: 'Add'
     back: 'Back'
+    remove: 'Remove'
 
 wlan:
   title:
@@ -12,3 +13,12 @@ wlan:
     password: 'Password'
   button:
     add: 'Add WLAN'
+
+
+printer:
+  title:
+    installedPrinters: 'Available printers'
+  button:
+    use: 'Use this printer'
+  notice:
+    isDefault: 'Current printer'

@@ -17,6 +17,13 @@
 
 6. Open `http://{ip-address}` in browser.
 7. Add WiFi settings and reboot Raspberry Pi. It should now connect to one of the defined WiFis, if available.
+8. Add printer and select printer to use
+
+
+## Send print job
+```
+curl -F "file=@/local/path/to/file.pdf" http://{ip-address}/app.php/print
+```
 
 
 ## Update app
