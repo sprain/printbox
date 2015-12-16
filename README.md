@@ -28,6 +28,8 @@ curl -F "file=@/local/path/to/file.pdf" http://{ip-address}/app.php/print
 
 ## Update app
 
+Without losing data and without going through the whole installation process.
+
 ```
 sudo sh /ticketpark/update.sh
 ```

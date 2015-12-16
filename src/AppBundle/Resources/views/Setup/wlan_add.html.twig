@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <a href="{{ path('wlan') }}" class="u-pull-right button">{% trans %}basics.button.back{% endtrans %}</a>
+    <a href="{{ path('index') }}" class="u-pull-right button">{% trans %}basics.button.back{% endtrans %}</a>
     <h4>{% trans %}wlan.title.add{% endtrans %}</h4>
     {{ form(form) }}
 {% endblock %}

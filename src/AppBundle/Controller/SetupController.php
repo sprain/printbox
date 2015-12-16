@@ -52,7 +52,7 @@ class SetupController extends Controller
 
             $this->generateWpaSupplicant();
 
-            return $this->redirect($this->generateUrl('wlan'));
+            return $this->redirect($this->generateUrl('index'));
         }
 
         return $this->render('@App/Setup/wlan_add.html.twig', array(
