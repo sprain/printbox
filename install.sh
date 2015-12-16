@@ -51,6 +51,7 @@ sudo apachectl restart
 sudo cp /ticketpark/printbox/install/etc/network/interfaces /etc/network/interfaces
 sudo cp /ticketpark/printbox/install/etc/default/isc-dhcp-server /etc/default/isc-dhcp-server
 sudo cp /ticketpark/printbox/install/etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp /ticketpark/printbox/install/etc/modprobe.d/8192cu.conf /etc/modprobe.d/8192cu.conf
 sudo cp /ticketpark/printbox/install/etc/rc.local /etc/rc.local
 sudo update-rc.d -f isc-dhcp-server remove
 
