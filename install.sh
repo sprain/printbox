@@ -35,13 +35,13 @@ sudo mv composer.phar /usr/local/bin/composer
 
 # INSTALL PRINTBOX APP
 cd /ticketpark/printbox
-mkdir app/data
+mkdir ../data
 composer install
 php app/console doctrine:database:create --env=prod
 php app/console doctrine:schema:create --env=prod
 php app/console cache:clear --env=prod
-sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data
-sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data
+sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs ../data
+sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs ../data
 
 # CONFIGURE APACHE
 sudo cp /ticketpark/printbox/install/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
