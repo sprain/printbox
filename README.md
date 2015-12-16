@@ -17,10 +17,10 @@
 
 6. Open `http://{ip-address}` in browser.
 7. Add WiFi settings and reboot Raspberry Pi. It should now connect to one of the defined WiFis, if available.
-8. Add printer and select printer to use
+8. Add printer (via CUPS) and select printer to use.
 
 
-## Send print job
+## Send print job to Raspberry
 ```
 curl -F "file=@/local/path/to/file.pdf" http://{ip-address}/app.php/print
 ```
@@ -30,4 +30,4 @@ curl -F "file=@/local/path/to/file.pdf" http://{ip-address}/app.php/print
 
 ```
 sudo sh /ticketpark/update.sh
-``
+```
