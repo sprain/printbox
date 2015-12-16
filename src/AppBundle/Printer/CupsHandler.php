@@ -37,7 +37,7 @@ class CupsHandler
         $printers  = array();
 
         foreach($response as $row){
-            preg_match('/printer\s(.*)\is/', $row, $printer);
+            preg_match('/^printer\s(.*)\is/', $row, $printer);
             preg_match('/is\s(.*)\./', $row, $statusCode);
 
             if(end($printer)){
