@@ -24,13 +24,12 @@ class CupsHandler
         return array($printers);
     }
 
-
     public function submit($filename, $printerName = false, $capabilities = array())
     {
         if($printerName){
             $command = 'lp -d ' . $printerName . ' ';
         } else {
-            $command = 'lpr ';
+            $command = 'lp ';
         }
 
         if($capabilities){
@@ -43,13 +42,12 @@ class CupsHandler
             $command .= $filename;
         }
 
-        $this->runCommand($command);
+        return $this->runCommand($command);
     }
-
 
     protected function runCommand($command)
     {
-        exec(escapeshellcmd($command), $output);
+        exec($command . '  2>&1', $output);
 
         return $output;
     }

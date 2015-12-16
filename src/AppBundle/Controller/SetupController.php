@@ -4,8 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Wlan;
 use AppBundle\Form\WlanType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,6 +14,7 @@ class SetupController extends Controller
 {
     /**
      * @Route("/", name="wlan")
+     * @Method({"GET"})
      */
     public function indexAction(Request $request)
     {
@@ -26,6 +28,7 @@ class SetupController extends Controller
 
     /**
      * @Route("/wlan/add", name="addWlan")
+     * @Method({"GET", "POST"})
      */
     public function addWlanAction(Request $request)
     {
@@ -55,6 +58,7 @@ class SetupController extends Controller
 
     /**
      * @Route("/wlan/remove/{id}", name="removeWlan")
+     * @Method({"GET"})
      * @ParamConverter("post", class="AppBundle:Wlan")
      */
     public function removeWlanAction(Request $request, Wlan $wlan)
