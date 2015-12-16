@@ -54,3 +54,6 @@ sudo cp /ticketpark/printbox/install/etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf
 sudo cp /ticketpark/printbox/install/etc/rc.local /etc/rc.local
 sudo update-rc.d -f isc-dhcp-server remove
 
+# PREPARE UPDATE SCRIPT
+sudo cp /ticketpark/printbox/install/update.sh /ticketpark/update.sh
+

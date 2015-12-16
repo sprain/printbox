@@ -17,3 +17,10 @@
 
 6. Open `http://{ip-address}` in browser.
 7. Add WiFi settings and reboot Raspberry Pi. It should now connect to one of the defined WiFis, if available.
+
+
+## Update app
+
+```
+sudo sh /ticketpark/update.sh
+``
