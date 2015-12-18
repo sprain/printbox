@@ -1,6 +1,6 @@
 # INSTALL PRINTBOX APP
 cd /ticketpark/printbox
-composer install
+sudo composer install
 php app/console doctrine:schema:update --force --env=prod
 php app/console cache:clear --env=prod
 sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
