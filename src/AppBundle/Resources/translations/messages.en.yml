@@ -3,6 +3,14 @@ basics:
     add: 'Add'
     back: 'Back'
     remove: 'Remove'
+    save: 'Save'
+
+admin:
+  title:
+    settings: 'Settings'
+  label:
+    apiBaseUrl: 'API Base URL'
+    printboxPid: 'Printbox PID'
 
 wlan:
   title:

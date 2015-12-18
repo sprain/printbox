@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Settings;
 use AppBundle\Entity\Wlan;
+use AppBundle\Form\SettingsType;
 use AppBundle\Form\WlanType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,6 +29,37 @@ class SetupController extends Controller
             'wlans' => $wlans,
             'printers' => $this->get('printbox.printers')->getPrinters()[0],
             'defaultPrinter' => $this->get('printbox.printers')->getDefaultPrinter()
+        ));
+    }
+
+    /**
+     * @Route("/admin", name="admin")
+     * @Method({"GET", "POST"})
+     */
+    public function adminAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $settings = $em->getRepository('AppBundle:Settings')->findAll();
+
+        //There is always only one settings record
+        $setting = new Settings();
+        if (count($settings) > 0) {
+            $setting = $settings[0];
+        }
+
+        $form = $this->createForm(SettingsType::class, $setting, array(
+            'action' => $this->generateUrl('admin'),
+            'method' => 'POST',
+        ));
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->persist($setting);
+            $em->flush();
+        }
+
+        return $this->render('@App/Setup/admin.html.twig', array(
+            'form' => $form->createView()
         ));
     }
 
