@@ -12,8 +12,8 @@ class SettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('apiBaseUrl', 'text', array(
-                'label' => 'admin.label.apiBaseUrl',
+            ->add('heartbeatUrl', 'text', array(
+                'label' => 'admin.label.heartbeatUrl',
                 'required' => true,
             ))
             ->add('printboxPid', 'text', array(

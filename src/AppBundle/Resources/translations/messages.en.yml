@@ -9,7 +9,7 @@ admin:
   title:
     settings: 'Settings'
   label:
-    apiBaseUrl: 'API Base URL'
+    heartbeatUrl: 'API Heartbeat URL'
     printboxPid: 'Printbox PID'
 
 wlan:

@@ -30,7 +30,7 @@ class Settings
      * @Assert\Url()
      * @Assert\NotBlank()
      */
-    protected $apiBaseUrl;
+    protected $heartbeatUrl;
 
     /**
      * @var string
@@ -51,27 +51,27 @@ class Settings
     }
 
     /**
-     * Set apiBaseUrl
+     * Set heartbeatUrl
      *
-     * @param string $apiBaseUrl
+     * @param string $heartbeatUrl
      *
      * @return Settings
      */
-    public function setApiBaseUrl($apiBaseUrl)
+    public function setHeartbeatUrl($heartbeatUrl)
     {
-        $this->apiBaseUrl = $apiBaseUrl;
+        $this->heartbeatUrl = $heartbeatUrl;
 
         return $this;
     }
 
     /**
-     * Get apiBaseUrl
+     * Get heartbeatUrl
      *
      * @return string
      */
-    public function getApiBaseUrl()
+    public function getHeartbeatUrl()
     {
-        return $this->apiBaseUrl;
+        return $this->heartbeatUrl;
     }
 
     /**

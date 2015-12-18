@@ -5,3 +5,7 @@ services:
     printbox.printers:
         class: AppBundle\Printer\CupsHandler
         arguments: [%default_printer_path%]
+
+    printbox.heartbeat:
+        class: AppBundle\Heartbeat\HeartbeatHandler
+        arguments: [@doctrine.orm.entity_manager]
