@@ -55,6 +55,9 @@ sudo cp /ticketpark/printbox/install/etc/modprobe.d/8192cu.conf /etc/modprobe.d/
 sudo cp /ticketpark/printbox/install/etc/rc.local /etc/rc.local
 sudo update-rc.d -f isc-dhcp-server remove
 
+# ADD CRONJOB
+crontab -l | { cat; echo "* * * * * php /ticketpark/printbox/app/console printbox:heartbeat --env=prod > /dev/null 2>&1"; } | crontab -
+
 # PREPARE UPDATE SCRIPT
 sudo cp /ticketpark/printbox/install/update.sh /ticketpark/update.sh
 
